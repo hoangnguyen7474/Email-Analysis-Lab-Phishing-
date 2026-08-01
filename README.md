@@ -43,8 +43,9 @@ This lab demonstrates how to:
 ### 1. Analyze the email headers
 
 The header review focused on the `Received` chain, sender IP, sending service, sender domain, reply address, message ID, MIME content type, and authentication results.
+<img width="1318" height="692" alt="image" src="https://github.com/user-attachments/assets/6569cd41-74c9-4b85-a60a-33cb8d9d81dc" />
 
-![Authentication results](assets/featured/02-authentication-results.png)
+
 
 Key observations:
 
