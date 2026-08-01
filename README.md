@@ -4,7 +4,7 @@ A defensive-security write-up showing how to investigate a suspicious email from
 
 > **Training disclaimer:** This repository documents a CTF-style email-analysis lab. The indicators and story are presented as lab evidence, not as a confirmed real-world incident. No live malware is included.
 
-![Email header overview](assets/featured/01-email-header-overview.png)
+
 
 ## Project overview
 
