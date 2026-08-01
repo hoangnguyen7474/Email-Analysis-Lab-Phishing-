@@ -144,7 +144,7 @@ The repository intentionally excludes the original email and extracted evidence 
 
 ## Investigation report
 
-The complete report is available in [REPORT.md](REPORT.md).
+The complete report is available in https://github.com/hoangnguyen7474/Email-Analysis-Lab-Phishing-/blob/main/Email_Analysis_Investigation_Report.pdf.
 
 ## Portfolio summary
 
