@@ -1,4 +1,6 @@
-# Suspicious Email and Attachment Analysis Lab
+# The Planet's Prestige: Suspicious Email and Attachment Analysis Lab
+
+https://blueteamlabs.online/home/challenge/the-planets-prestige-e5beb8e545
 
 A defensive-security write-up showing how to investigate a suspicious email from its headers through its nested attachment contents.
 
@@ -59,27 +61,34 @@ Key observations:
 
 The message body was marked as Base64 encoded. It was decoded in CyberChef to reveal the readable email text.
 
-![Base64 decoding](assets/featured/03-base64-decoding.png)
+<img width="1320" height="693" alt="image" src="https://github.com/user-attachments/assets/8b84eb06-919c-4d8a-ba7d-1c23969b1ad1" />
+
 
 ### 3. Validate the attachment type
 
 Although the attachment was named `PuzzleToCoCanDa.pdf`, its leading bytes were:
+<img width="1310" height="680" alt="image" src="https://github.com/user-attachments/assets/d0282335-6355-4e79-adc9-488d800e961a" />
 
 ```text
 50 4B 03 04
 ```
+<img width="1149" height="988" alt="image" src="https://github.com/user-attachments/assets/32892cb6-5fe1-4ec9-bc4f-50030244eb25" />
 
 This signature identifies a ZIP-compatible archive, not a PDF. A normal PDF begins with:
+<img width="1024" height="185" alt="image" src="https://github.com/user-attachments/assets/8207b30c-a016-4e11-96f6-b1908f660311" />
 
 ```text
 25 50 44 46
 ```
 
-![ZIP magic bytes](assets/featured/04-zip-magic-bytes.png)
+
 
 ### 4. Extract and inspect the files
 
 After decoding and saving the attachment as a ZIP archive, the following files were found:
+
+<img width="762" height="461" alt="image" src="https://github.com/user-attachments/assets/b338c1cd-2970-4504-8428-d72ee80643df" />
+
 
 | File | Identified type | Evidence |
 |---|---|---|
@@ -87,21 +96,22 @@ After decoding and saving the attachment as a ZIP archive, the following files w
 | `GoodJobMajor` | PDF document | `25 50 44 46` |
 | `Money.xlsx` | Office Open XML spreadsheet | ZIP/OOXML structure |
 
-![Extracted files](assets/featured/05-extracted-files.png)
-
 ### 5. Follow the puzzle chain
 
 The PDF directed the analyst to the image and spreadsheet. The spreadsheet contained multiple worksheets; a blank-looking sheet held text hidden by formatting.
 
-![Puzzle PDF](assets/featured/08-puzzle-pdf.png)
+<img width="1054" height="696" alt="image" src="https://github.com/user-attachments/assets/97afaa04-b0ef-4fb5-afb7-addec46f7d53" />
+
 
 After clearing the formatting, a Base64 string became visible.
 
-![Hidden Base64 string](assets/featured/10-hidden-base64.png)
+<img width="921" height="693" alt="image" src="https://github.com/user-attachments/assets/bceb62de-ffe2-4565-b137-b97535b2b09a" />
+
 
 Decoding that string produced the final lab answer.
 
-![Decoded location](assets/featured/11-decoded-location.png)
+<img width="1323" height="412" alt="image" src="https://github.com/user-attachments/assets/c10df584-5d66-4fae-a302-bef90de4fda5" />
+
 
 ## Key findings
 
@@ -116,29 +126,6 @@ Decoding that string produced the final lab answer.
 | Malware | No malware family or executable payload was identified in the supplied lab evidence |
 | Final result | `The Martian Colony, Beside Interplanetary Spaceport.` |
 
-## Repository structure
-
-```text
-.
-├── README.md
-├── REPORT.md
-├── GITHUB_UPLOAD_GUIDE.md
-├── docs/
-│   ├── analysis-methodology.md
-│   └── evidence-handling.md
-├── iocs/
-│   └── indicators.csv
-├── scripts/
-│   ├── hash_evidence.py
-│   └── identify_file_type.py
-├── evidence/
-│   └── README.md
-├── assets/
-│   ├── featured/
-│   └── screenshots/
-└── .github/workflows/
-    └── python-check.yml
-```
 
 ## Tools used in the lab
 
